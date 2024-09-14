@@ -1,0 +1,42 @@
+{
+  "name": "metas-nlw-pocket-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/src/index.js",
+    "dev": "tsx watch --env-file .env src/index.ts | pino-pretty -C",
+    "seed": "tsx --env-file .env src/db/seed.ts"
+  },
+  "_moduleAliases": {
+    "@src": "src/",
+    "@test": "test/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/module-alias": "^2.0.4",
+    "@types/node": "^22.5.4",
+    "drizzle-kit": "^0.24.2",
+    "pino-pretty": "^11.2.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@fastify-decorators/simple-di": "^4.0.0-next.5",
+    "@fastify/cors": "^9.0.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "dayjs": "^1.11.13",
+    "drizzle-orm": "^0.33.0",
+    "fastify": "^4.28.1",
+    "fastify-type-provider-zod": "^2.0.0",
+    "module-alias": "^2.2.3",
+    "pino": "^9.4.0",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8"
+  }
+}

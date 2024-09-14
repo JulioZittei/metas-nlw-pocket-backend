@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_version": "21.0.0",
+  "compilerOptions": {
+    "lib": [
+      "es2022"
+    ],
+    "target": "es2022",
+    "module": "es2022",
+    "moduleResolution": "node",
+    "strict": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "./src/*"
+      ],
+      "@test/*": [
+        "./test/*"
+      ],
+    },
+    "rootDirs": [
+      "./src",
+      "./test"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules/*",
+    "dist",
+  ]
+}
