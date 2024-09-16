@@ -2,6 +2,7 @@ import type { CreateGoalCompletionRequest } from '@src/controller/request/create
 import type { CreateGoalRequest } from '@src/controller/request/create-goal-request'
 import type { CreateGoalCompletionResponse } from '@src/controller/response/create-goal-completion-response'
 import type { CreateGoalResponse } from '@src/controller/response/create-goal-response'
+import type { GoalsWeekSummaryResponse } from '@src/controller/response/goal-week-summary-response'
 import type { PendingGoalsResponse } from '@src/controller/response/pending-goals-response'
 
 interface GoalService {
@@ -10,6 +11,7 @@ interface GoalService {
     request: CreateGoalCompletionRequest
   ): Promise<CreateGoalCompletionResponse>
   getWeekPendingGoals(): Promise<PendingGoalsResponse[]>
+  getWeekSummary(): Promise<GoalsWeekSummaryResponse>
 }
 
 export type { GoalService }

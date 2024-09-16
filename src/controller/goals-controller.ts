@@ -11,6 +11,7 @@ import {
   type CreateGoalCompletionRequest,
   createGoalCompletionSchema,
 } from './request/create-goal-completion-request'
+import logger from '@src/logger'
 
 type Request = FastifyRequest
 type Response = FastifyReply
@@ -62,6 +63,15 @@ class GoalsController {
   ): Promise<Response> {
     const pendingGoals = await this.goalService.getWeekPendingGoals()
     return res.status(200).send(pendingGoals)
+  }
+
+  @GET({
+    url: '/summary',
+  })
+  public async getWeekSummary(req: Request, res: Response): Promise<Response> {
+    const weekSummary = await this.goalService.getWeekSummary()
+    logger.info(weekSummary)
+    return res.status(200).send(weekSummary)
   }
 }
 
