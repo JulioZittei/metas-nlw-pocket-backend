@@ -13,7 +13,6 @@ import type {
   GoalsPerDay,
   GoalsWeekSummary,
 } from '@src/model/goals-week-summary'
-import logger from '@src/logger'
 
 @Repository('GoalsRepository')
 class GoalsRepositoryImpl implements GoalsRepository {
@@ -65,7 +64,7 @@ class GoalsRepositoryImpl implements GoalsRepository {
       .as(
         this.dbClient
           .select({
-            completedAtDate: goalsCompletedInWeek.completedAtDate,
+            completedAtDate: goalsCompletedInWeek.completedAt,
             completions: sql /*sql*/`
           JSON_AGG(
             JSON_BUILD_OBJECT(
@@ -77,8 +76,8 @@ class GoalsRepositoryImpl implements GoalsRepository {
         `.as('completions'),
           })
           .from(goalsCompletedInWeek)
-          .groupBy(goalsCompletedInWeek.completedAtDate)
-          .orderBy(desc(goalsCompletedInWeek.completedAtDate))
+          .groupBy(goalsCompletedInWeek.completedAt)
+          .orderBy(desc(goalsCompletedInWeek.completedAt))
       )
 
     const result = await this.dbClient
@@ -100,7 +99,6 @@ class GoalsRepositoryImpl implements GoalsRepository {
       `,
       })
       .from(goalsCompletedByWeekDay)
-    logger.info(result[0])
 
     return result[0]
   }
